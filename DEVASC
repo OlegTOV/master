@@ -1,1 +1,104 @@
-
+devasc@labvm:~$ ls
+Desktop Downloads Music Public Templates
+Documents labs Pictures snap Videos
+devasc@labvm:~$
+devasc@labvm:~$ git config --global user.name "OlegTOV"
+devasc@labvm:~$ git config --global user.email oleg.tonevitskiy@mail.ru
+devasc@labvm:~$ git config --list
+user.name=OlegTOV
+user.email=oleg.tonevitskiy@mail.ru
+devasc@labvm:~$
+devasc@labvm:~$ cd labs/devnet-src/
+devasc@labvm:~/labs/devnet-src$
+devasc@labvm:~/labs/devnet-src$ mkdir git-intro
+devasc@labvm:~/labs/devnet-src$ cd git-intro
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git init
+Initialized empty Git repository in /home/devasc/labs/devnet-src/git-intro/.git/
+devasc@labvm:~/labs/devnet-src/git-intro$ ls -a
+. .. .git
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git status
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ echo "I am on my way to passing the
+Cisco DEVASC exam" > DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ ls -la
+total 16
+drwxrwxr-x 3 devasc devasc 4096 Apr 17 20:38 .
+drwxrwxr-x 5 devasc devasc 4096 Apr 17 19:50 ..
+-rw-rw-r-- 1 devasc devasc 48 Apr 17 20:38 DEVASC.txt
+drwxrwxr-x 7 devasc devasc 4096 Apr 17 19:57 .git
+evasc@labvm:~/src/git-intro$ cat DEVASC.txt
+I am on my way to passing the Cisco DEVASC exam
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git status
+On branch master
+No commits yet
+Untracked files:
+ (use "git add <file>..." to include in what will be committed)
+DEVASC.txt
+nothing added to commit but untracked files present (use "git add" to track)
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git add DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$ git status
+On branch master
+No commits yet
+Changes to be committed:
+ (use "git rm --cached <file>..." to unstage)
+new file: DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git commit -m "Committing
+DEVASC.txt to begin tracking changes"
+[master (root-commit) b510f8e] Committing DEVASC.txt to begin tracking changes
+1 file changed, 1 insertion(+)
+create mode 100644 DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git log
+commit b510f8e5f9f63c97432d108a0413567552c07356 (HEAD -> master)
+Author: Sample User <sample@example.com>
+Date: Sat Apr 18 18:03:28 2020 +0000
+ Committing DEVASC.txt to begin tracking changes
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ echo "I am beginning to understand
+Git!" >> DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$ cat DEVASC.txt
+I am on my way to passing the Cisco DEVASC exam
+I am beginning to understand Git!
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git status
+On branch master
+Changes not staged for commit:
+ (use "git add <file>..." to update what will be committed)
+ (use "git restore <file>..." to discard changes in working directory)
+modified: DEVASC.txt
+no changes added to commit (use "git add" and/or "git commit -a")
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git add DEVASC.txt
+devasc@labvm:~/labs/devnet-src/git-intro$ git commit -m "Added additional
+line to file"
+[master 9f5c4c5] Added additional line to file
+1 file changed, 1 insertion(+)
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git log
+commit 9f5c4c5d630e88abe2a873fe48144e25ebe7bd6a (HEAD -> master)
+Author: Sample User <sample@example.com>
+Date: Sat Apr 18 19:17:50 2020 +0000
+ Added additional line to file
+commit b510f8e5f9f63c97432d108a0413567552c07356
+Author: Sample User <sample@example.com>
+Date: Sat Apr 18 18:03:28 2020 +0000
+ Committing DEVASC.txt to begin tracking changes
+devasc@labvm:~/labs/devnet-src/git-intro$
+devasc@labvm:~/labs/devnet-src/git-intro$ git diff b510f8e 9f5c4c5
+diff --git a/DEVASC.txt b/DEVASC.txt
+index 93cd3fb..085273f 100644
+--- a/DEVASC.txt
++++ b/DEVASC.txt
+@@ -1 +1,2 @@
+I am on my way to passing the Cisco DEVASC exam
++I am beginning to understand Git!
+devasc@labvm:~/labs/devnet-src/git-intro$
